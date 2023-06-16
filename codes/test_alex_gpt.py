@@ -10,7 +10,7 @@ import csv
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # Define the path to your saved model
-model_path = '/home/woody/iwso/iwso092h/leaf_clf/finetuned_model_gpt.pth'
+model_path = '/home/woody/iwso/iwso092h/leaf_clf/model_alex/model_epoch_20.pth'
 
 # Load the saved model
 alexnet_model = alexnet(pretrained=False)
@@ -22,9 +22,9 @@ alexnet_model.eval()
 
 # Define the transformation for your images (resize, normalize, etc.)
 image_transforms = transforms.Compose([
-    transforms.Resize((227, 227)),
-    transforms.ToTensor(),
-    # transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+    transforms.Resize((227, 227)),  # Resize the image
+    transforms.ToTensor(),  # Convert the image to a tensor
+    transforms.Normalize(mean=[0.4495, 0.4654, 0.4004], std=[0.1785, 0.1566, 0.1945])
 ])
 
 # Define the path to your new images
